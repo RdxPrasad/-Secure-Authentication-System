@@ -34,31 +34,31 @@ Backend authentication system built using:
 
 1. Clone the repository
 
-git clone https://github.com/RdxPrasad/Secure-Authentication-System.git
+    git clone https://github.com/RdxPrasad/-Secure-Authentication-System
 
 
 2. Create virtual environment
 
-python -m venv venv
-venv\Scripts\activate
+    python -m venv venv
+    venv\Scripts\activate
 
 
 3. Install dependencies
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 
 4. Create a `.env` file in project root:
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=auth_system
+    DB_HOST=localhost
+    DB_USER=root
+    DB_PASSWORD=yourpassword
+    DB_NAME=auth_system
 
 
 5. Run the server
 
-uvicorn main:app --reload
+    uvicorn main:app --reload
 
 
 ---
