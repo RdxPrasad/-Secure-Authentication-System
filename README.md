@@ -1,72 +1,168 @@
-# 🔐 Secure Authentication System (Phase 1)
+🔐 Secure Authentication System (Production-Level Backend)
 
-Backend authentication system built using:
+A production-style authentication backend built using FastAPI + MySQL, featuring multi-step verification, OTP-based validation, and secure login architecture.
 
-- FastAPI
-- MySQL
-- Bcrypt
-- OTP Verification
-- Environment Variables (.env)
+🚀 Features
+📝 User Registration
 
----
+Full Name, Username, Email, Mobile
 
-## 🚀 Features
+Password + Confirm Password validation
 
-- User Registration
-- Password Hashing using Bcrypt
-- Login with OTP Generation
-- OTP Expiry (5 minutes)
-- Secure DB credentials using .env
+Age verification (18+ only)
 
----
+Unique username & email enforcement
 
-## 🛠 Tech Stack
+📧 Email Verification (OTP-Based)
 
-- Python
-- FastAPI
-- MySQL
-- Bcrypt
-- python-dotenv
+Generate 6-digit OTP
 
----
+OTP stored securely in otp_codes table
 
-## ▶️ How to Run
+5-minute expiry
 
-1. Clone the repository
+Auto-deletion after verification
 
-    git clone https://github.com/RdxPrasad/-Secure-Authentication-System
+📱 Mobile Verification (OTP-Based)
 
+Separate mobile OTP flow
 
-2. Create virtual environment
+Independent verification flag
 
-    python -m venv venv
-    venv\Scripts\activate
+Clean OTP management
 
+🔐 Secure Login
 
-3. Install dependencies
+Login allowed only if:
 
-    pip install -r requirements.txt
+Email is verified
 
+Mobile is verified
 
-4. Create a `.env` file in project root:
+Account is active
 
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=yourpassword
-    DB_NAME=auth_system
+Password matches (bcrypt hashed)
 
+🛡 Security Features
 
-5. Run the server
+Password hashing using Bcrypt
 
-    uvicorn main:app --reload
+Soft account disable (is_active)
 
+OTP expiry handling
 
----
+Old OTP cleanup before regeneration
 
-## 📌 Phase 1 Completed
+Environment-based DB credentials
 
-Next Phase:
-- JWT Integration
-- Email-based OTP
-- Role-based Authorization
-- Docker Setup
+🏗 Database Architecture
+👤 users Table
+
+full_name
+
+username (UNIQUE)
+
+email (UNIQUE)
+
+email_verification (boolean)
+
+mobile (UNIQUE)
+
+mobile_verification (boolean)
+
+password_hash
+
+dob
+
+gender
+
+is_active
+
+created_at
+
+🔑 otp_codes Table
+
+contact_no
+
+otp
+
+purpose (email_verification / mobile_verification)
+
+expiry
+
+created_at
+
+🛠 Tech Stack
+
+Python
+
+FastAPI
+
+MySQL
+
+Bcrypt
+
+python-dotenv
+
+▶️ How to Run
+1️⃣ Clone the repository
+git clone https://github.com/RdxPrasad/-Secure-Authentication-System
+2️⃣ Create virtual environment
+python -m venv venv
+venv\Scripts\activate
+3️⃣ Install dependencies
+pip install -r requirements.txt
+4️⃣ Create .env file
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=auth_system
+5️⃣ Run the server
+uvicorn main:app --reload
+🔄 Authentication Flow
+
+Register user (stored with verification flags = False)
+
+Send Email OTP
+
+Verify Email OTP
+
+Send Mobile OTP
+
+Verify Mobile OTP
+
+Login (allowed only if fully verified)
+
+📌 Current Status
+
+✅ Registration with validation
+✅ Email OTP verification
+✅ Mobile OTP verification
+✅ Secure login enforcement
+🟡 JWT integration (Next Phase)
+
+🔜 Upcoming Enhancements
+
+JWT Token Authentication
+
+Protected Routes
+
+Role-Based Authorization
+
+Email SMTP Integration
+
+Rate Limiting for OTP
+
+Docker Deployment
+
+📈 Project Level
+
+This project demonstrates:
+
+Multi-step authentication architecture
+
+Secure database design
+
+OTP lifecycle management
+
+Production-style login validation
